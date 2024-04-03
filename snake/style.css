@@ -13,10 +13,10 @@
 }
 
 .snake {
-     background-color: blue;
+     background-color: black;
 }
 
 .apple{
-    background-color: red;
+    background-color: rgb(246, 246, 246);
     border-radius: 50%;
 }
