@@ -12,9 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let speed = 0.9
     let intervalTime = 0
     let interval = 0
+    let startTime = 0
+    let elapsedTime = 0
 
     //to start and restart 
     function startGame() {
+        startTime = Date.now()
         currentSnake.forEach(index => squares[index].classList.remove('snake'))
         squares[appleIndex].classList.remove('apple')
         clearInterval(interval)
@@ -39,7 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
             (currentSnake[0] - width < 0 && direction === -width) ||//snake hits top border
             squares[currentSnake[0] + direction].classList.contains('snake')
         ) {
-            return clearInterval(interval)
+            clearInterval(interval)
+            elapsedTime = Math.floor((Date.now() - startTime) / 1000)
+            alert('Game over! Your score is: ' + score + '. You lasted for ' + elapsedTime + ' seconds.' )
+            return
         }
         const tail = currentSnake.pop()
         squares[tail].classList.remove('snake') //removes class of snake from the tail
@@ -53,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentSnake.push(tail)
             randomApple()
             score++
+            console.log('apple eaten, new apple at index:', appleIndex)
             scoreDisplay.textConent = score
             clearInterval(interval)
             intervalTime = intervalTime * speed
@@ -74,7 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //assign functions to keycodes
     function control(e) {
-        console.log("key pressed: ", e.keyCode)
+
+        //console.log("key pressed: ", e.keyCode)
+
         squares[currentIndex].classList.remove('snake')
 
         if (e.keyCode === 39) {
