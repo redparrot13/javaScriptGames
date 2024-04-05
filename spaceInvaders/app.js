@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const squares = document.querySelectorAll('.grid div')
     const resultDisplay = document.querySelector('#result')
-    const reset = document.querySelector('.reset')
+    // const reset = document.querySelector('.reset')
     let width = 15
     let currentShooterIndex = 202
     let currentInvaderIndex = 0
@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let direction = 1
     let invaderId
     let laserId
+    
     //define alien invaders
     let alienInvaders = [
         0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
