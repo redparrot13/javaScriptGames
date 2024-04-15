@@ -24,3 +24,18 @@
     background-color: green;
 }
 
+.c1 {
+    background-color: black;
+}
+
+.c2, .c3 {
+    background-color: grey;
+}
+
+.l1, .l2, .l3 {
+    background: brown ;
+}
+.l4, .l5 {
+    background-color: lightblue ;
+}
+
