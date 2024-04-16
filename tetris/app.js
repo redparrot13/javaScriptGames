@@ -65,6 +65,45 @@ document.addEventListener('DOMContentLoaded', () => {
         ))
     }
 
+    //move shape down 
+    function moveDown() {
+        undraw()
+        currentPosition = currentPosition += width
+        draw()
+        freeze()
+    }
+
+    //move left and prevent collisions 
+    function moveRight() {
+        undraw()
+        const isAtRightEdge = current.some(index => (currentPostion + index) % width === width - 1)
+        if (!isAtRightEdge) currentPosition += 1
+        if (current.some(index => squares[currentPosition + index].classList.contains('block2'))) {
+            currentPosition -= 1
+        }
+        draw()
+    }
+
+    function moveLeft() {
+        undraw()
+        const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
+        if (!isAtLeftEdge) currentPosition -= 1
+        if (current.some(index => squares[currentPosition + index].classList.contains('block2'))) {
+            currentPosition += 1
+        }
+        draw()
+    }
+
+    // rotate tetromino 
+function rotate() {
+    undraw()
+    currentRotation ++ 
+    if(currentRotation ===current.length) {
+        currentRotation =0
+    }
+    current = theTetrominos[random][currentRotation]
+    draw()
+}
 
 
 
